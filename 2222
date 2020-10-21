@@ -1,0 +1,12 @@
+string sms;
+int kolvo;
+
+Console.WriteLine("Напишите sms");
+sms = Convert.ToString(Console.ReadLine());
+Console.WriteLine("Напишите кол-во sms");
+kolvo = Convert.ToInt32(Console.ReadLine());
+
+while (kolvo-- > 0 )
+{
+Console.WriteLine(sms);
+}
