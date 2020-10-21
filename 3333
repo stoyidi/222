@@ -1,0 +1,15 @@
+string sms;
+string userInput = "exit";
+
+Console.WriteLine("Напишите смс другу - ");
+sms = Console.ReadLine();
+while (sms != userInput)
+{
+Console.WriteLine("Напишите смс другу - ");
+sms = Console.ReadLine();
+
+if (userInput == sms)
+{
+break;
+}
+}
