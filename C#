@@ -1,0 +1,8 @@
+            string sms = "пустая строка";
+            string exit = "выйти";
+
+            Console.WriteLine("Напишите смс другу - ");
+            while (sms != exit)
+            {
+                sms = Console.ReadLine();
+            }
