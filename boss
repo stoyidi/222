@@ -1,0 +1,79 @@
+            Random rand = new Random();
+            bool healthcheck = false;
+            int healthHero = rand.Next(3000, 5000);
+            int damagehero = rand.Next(500, 1000);
+            int healthBoss = rand.Next(2500, 8000);
+            int damageboss = rand.Next(500, 800);
+            int rashamon = rand.Next(200, 500);
+            bool rashamonCheck = false;
+            int huganzakura = rand.Next(600, 1000);
+            int razlom = 500;
+            bool castCheck = true;
+            int cast;
+
+            Console.WriteLine("Босс Атакует !!! Приготовьтесь к бою!\n" +
+                "Выберете заклинание!\n" +
+                "1 - Рашамон – призывает теневого духа для нанесения атаки (Отнимает 100 хп игроку)\n" +
+                "2 - Хуганзакура (Может быть выполнен только после призыва теневого духа), наносит 100 ед. урона\n" +
+                "3 - Межпространственный разлом – позволяет скрыться в разломе и восстановить 250 хп. Урон босса по вам не проходит");
+            Console.WriteLine("У вас - " + healthHero + " хп, a у Босса " + healthBoss);
+
+            while (castCheck)
+            {
+                cast = Convert.ToInt32(Console.ReadLine());
+                switch (cast)
+                {
+                    case 1:
+                        Console.WriteLine("Вы призвали теневого духа который нанес Боссу в 100 урона !");
+                        healthBoss -= damagehero;
+                        healthBoss -= rashamon;
+                        healthHero -= damageboss;
+                        rashamonCheck = true;
+                        break;
+                    case 2:
+                        if (rashamonCheck)
+                        {
+                            Console.WriteLine("Хуганзакура наносит 100 ед. урона");
+                            healthBoss -= damagehero;
+                            healthBoss -= huganzakura;
+                            healthHero -= damageboss;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Рашамон не призван, заклинание не сработало");
+                            break;
+                        }
+                    case 3:
+                        healthHero += razlom;
+                        Console.WriteLine("Ваше хп восстановлено");
+                        break;
+                    default:
+                        Console.WriteLine("Не известное" + cast);
+                        break;
+
+                }
+                if (healthHero <= 0 && healthBoss <= 0)
+                {
+                    healthHero *= Convert.ToInt32(healthcheck);
+                    healthBoss *= Convert.ToInt32(healthcheck);
+                    Console.WriteLine("Вас в ответ атаковал Босс, у вас осталось - " + healthHero + "хп, a у Босса " + healthBoss);
+                    Console.WriteLine("Ничья");
+                    break;
+                }
+                else if (healthHero <= 0)
+                {
+                    healthHero *= Convert.ToInt32(healthcheck);
+                    Console.WriteLine("Вас в ответ атаковал Босс, у вас осталось - " + healthHero + "хп, a у Босса " + healthBoss);
+                    Console.WriteLine("Герой умер..");
+                    break;
+                }
+                else if (healthBoss <= 0)
+                {
+                    healthBoss *= Convert.ToInt32(healthcheck);
+                    Console.WriteLine("Вас в ответ атаковал Босс, у вас осталось - " + healthHero + "хп, a у Босса " + healthBoss);
+                    Console.WriteLine("Босс побежден");
+                    break;
+                }
+                Console.WriteLine("Вас в ответ атаковал Босс, у вас осталось - " + healthHero + "хп, a у Босса " + healthBoss);
+            }
