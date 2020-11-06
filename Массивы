@@ -1,0 +1,19 @@
+int sum = 0;
+            int[] firstMas = new int[0];
+            while (true)
+            {
+                string userInput = Console.ReadLine();
+                if (userInput == "exit")
+                {
+                    break;
+                }
+                else if (userInput == "sum")
+                {
+                    Console.WriteLine("Сумма введённых чисел равна " + sum);
+                    break;
+                }
+                int[] secmas = new int[firstMas.Length + 1];
+                secmas[secmas.Length - 1] = Convert.ToInt32(userInput);
+                firstMas = secmas;
+                sum += Convert.ToInt32(userInput);
+                Console.WriteLine("Dlina " + sum);
