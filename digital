@@ -1,0 +1,41 @@
+ string userInput = "";
+            
+
+            int[] firstMas = new int[0];
+            while (userInput != "exit")
+            {
+                bool IsNumber = true;
+                userInput = Console.ReadLine();
+                foreach (char letter in userInput)
+                {
+                    if (!char.IsDigit(letter))
+                    {
+                        IsNumber = false;
+                    }
+                }
+                if (IsNumber)
+                {
+                    int[] secondMas = new int[firstMas.Length + 1];
+                    int number = Convert.ToInt32(userInput);
+                    secondMas[secondMas.Length - 1] = number;
+                    for (int i = 0; i < firstMas.Length; i++)
+                        secondMas[i] = firstMas[i];
+                    firstMas = secondMas;
+                    Console.WriteLine("Длинна массива: " + firstMas.Length);
+                }
+                else
+                {
+                    if (userInput != "sum" && userInput != "exit")
+                    {
+                        Console.WriteLine("Введено не правильно");
+                    }
+                    if (userInput == "sum")
+                    {
+                        int sum = 0;
+                        foreach (int number in firstMas)
+                        {
+                            sum += number;
+                        }
+                        Console.WriteLine("Сумма введённых чисел равна " + sum);
+                    }
+                }
