@@ -1,18 +1,13 @@
- string userInput = "";
-            
+  string userInput = "";
+
 
             int[] firstMas = new int[0];
             while (userInput != "exit")
             {
-                bool IsNumber = true;
+                int numbers;
+                bool IsNumber;
                 userInput = Console.ReadLine();
-                foreach (char letter in userInput)
-                {
-                    if (!char.IsDigit(letter))
-                    {
-                        IsNumber = false;
-                    }
-                }
+                IsNumber = int.TryParse(userInput, out numbers);
                 if (IsNumber)
                 {
                     int[] secondMas = new int[firstMas.Length + 1];
@@ -39,3 +34,4 @@
                         Console.WriteLine("Сумма введённых чисел равна " + sum);
                     }
                 }
+       }    }   
